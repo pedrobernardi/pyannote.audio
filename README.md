@@ -38,10 +38,10 @@ HUGGINGFACE_TOKEN=seu_token_aqui
 ## Exemplo de Uso
 
 bash
-curl -X 'POST' 
-  'https://seu-projeto.up.railway.app/diarize' 
-  -H 'accept: application/json' 
-  -H 'Content-Type: multipart/form-data' 
+curl -X 'POST' \
+  'https://seu-projeto.up.railway.app/diarize' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
   -F 'file=@/caminho/para/seu_audio.wav'
 
 A resposta será um JSON contendo os segmentos de áudio com os respectivos locutores e timestamps.
