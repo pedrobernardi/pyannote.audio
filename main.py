@@ -1,3 +1,39 @@
+from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pyannote.audio import Pipeline
+import tempfile
+import shutil
+import os
+
+# ✅ Primeiro, crie a instância do app
+app = FastAPI()
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Variável global para o pipeline
+pipeline = None
+HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+
+if not HUGGINGFACE_TOKEN:
+    raise RuntimeError("HUGGINGFACE_TOKEN não está definido nas variáveis de ambiente!")
+
+try:
+    print("🔁 Carregando modelo do Hugging Face...")
+    pipeline = Pipeline.from_pretrained(
+        "pyannote/speaker-diarization",
+        use_auth_token=HUGGINGFACE_TOKEN
+    )
+    print("✅ Modelo carregado com sucesso.")
+except Exception as e:
+    raise RuntimeError(f"Erro ao carregar pipeline: {e}")
+
+# ✅ Só agora defina os endpoints da API
 @app.post("/diarize")
 async def diarize_audio(file: UploadFile = File(...)):
     try:
