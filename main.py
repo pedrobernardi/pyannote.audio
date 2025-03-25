@@ -63,11 +63,12 @@ async def diarize_audio(file: UploadFile = File(...)):
             })
 
         print(f"📦 Retornando {len(results)} segmentos")
-        return {"segments": results}
+        return {"segments": results"}
 
-        except Exception as e:
+    except Exception as e:  # ✅ Alinhado com try
         import traceback
         print("❌ ERRO no endpoint /diarize:", str(e))
-        traceback.print_exc()  # <-- Isso vai imprimir o erro real nos logs da Railway
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Erro ao processar áudio: {e}")
+
 
