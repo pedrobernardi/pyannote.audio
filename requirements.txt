@@ -2,3 +2,4 @@ fastapi
 uvicorn[standard]
 pyannote.audio
 torch
+python-multipart
