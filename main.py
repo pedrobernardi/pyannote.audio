@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 # Variável global para o pipeline
-print(f"📁 Enviando arquivo salvo: {tmp_path}")
+
 pipeline = None
 HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 
