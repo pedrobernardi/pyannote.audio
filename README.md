@@ -84,9 +84,6 @@ Ajuste as configurações de CORS no main.py conforme necessário para o seu amb
 - **Configurações de CORS:** Ajuste as configurações de CORS no `main.py` para permitir apenas origens confiáveis, especialmente em ambientes de produção.
 - **Desempenho:** Embora o serviço funcione bem em instâncias com CPU, considere utilizar instâncias com suporte a GPU para melhorar o desempenho em processamento de áudio de maior volume.
 
----
 
-Se precisar de assistência adicional ou tiver dúvidas durante o processo de implantação, não hesite em perguntar!
-::contentReference[oaicite:0]{index=0}
  
 
