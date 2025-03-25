@@ -17,6 +17,7 @@ app.add_middleware(
 )
 
 # Variável global para o pipeline
+print(f"📁 Enviando arquivo salvo: {tmp_path}")
 pipeline = None
 HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 
@@ -64,6 +65,9 @@ async def diarize_audio(file: UploadFile = File(...)):
         print(f"📦 Retornando {len(results)} segmentos")
         return {"segments": results}
 
-    except Exception as e:
+        except Exception as e:
+        import traceback
         print("❌ ERRO no endpoint /diarize:", str(e))
+        traceback.print_exc()  # <-- Isso vai imprimir o erro real nos logs da Railway
         raise HTTPException(status_code=500, detail=f"Erro ao processar áudio: {e}")
+
