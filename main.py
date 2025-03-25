@@ -63,7 +63,7 @@ async def diarize_audio(file: UploadFile = File(...)):
             })
 
         print(f"📦 Retornando {len(results)} segmentos")
-        return {"segments": results"}
+        return {"segments": results}
 
     except Exception as e:  # ✅ Alinhado com try
         import traceback
